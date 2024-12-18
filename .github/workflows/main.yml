@@ -1,4 +1,4 @@
-name: Aqua GitHub Action Workflow
+name: Aqua
 on:
   push:
     branches:

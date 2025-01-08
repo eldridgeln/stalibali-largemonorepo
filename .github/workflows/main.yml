@@ -2,6 +2,7 @@ name: Aqua
 on:
   push:
     branches:
+      - main
       - flight-simulator
       - ticket-booking
 jobs:

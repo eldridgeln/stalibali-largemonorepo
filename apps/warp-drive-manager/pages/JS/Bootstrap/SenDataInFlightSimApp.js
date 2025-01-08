@@ -4,7 +4,7 @@ const sensitiveData = {
     host: 'localhost',
     port: 5432,
     username: 'db_user',
-    password: 'secure_password',
+    password: 'secure_password_not_any_more',
   },
   apiKeys: {
     serviceA: 'your_serviceA_api_key',

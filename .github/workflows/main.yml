@@ -48,8 +48,8 @@ jobs:
  #       with:
  #         sarif_file: 'trivy-results.sarif'
          
-      - name: Build and push
-        uses: docker/build-push-action@v3
-        with:
-          push: true
-          tags: "stalibali/supplychainactionworkflow:${{ github.sha }}"
+#      - name: Build and push
+ #       uses: docker/build-push-action@v3
+ #       with:
+ #         push: true
+ #         tags: "stalibali/supplychainactionworkflow:${{ github.sha }}"

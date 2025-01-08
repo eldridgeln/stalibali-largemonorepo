@@ -2,7 +2,8 @@ name: Aqua
 on:
   push:
     branches:
-      - main
+      - flight-simulator
+      - ticket-booking
 jobs:
   aqua:
     name: Aqua scanner
@@ -10,20 +11,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-      
-   # setup pipeline enforcer    
-      - name: Setup pipeline enforcer
-        uses: aquasecurity/pipeline-enforcer-action@main
-        with:
-          aqua-key: ${{ secrets.AQUA_KEY }}
-          aqua-secret: ${{ secrets.AQUA_SECRET }}    
-
-   # Run Aqua Scanner       
+  
       - name: Run Aqua scanner
         uses: docker://aquasec/aqua-scanner
         with:
@@ -41,14 +29,35 @@ jobs:
           GITHUB_TOKEN: ${{ github.token }}
           TRIVY_RUN_AS_PLUGIN: 'aqua'
           # For http/https proxy configuration add env vars: HTTP_PROXY/HTTPS_PROXY, CA-CRET (path to CA certificate)
+ #   name: Aqua scanner
+ #   runs-on: ubuntu-latest
+ #   steps:
+ #     - name: Checkout code
+ #       uses: actions/checkout@v2
+ #     - name: Login to DockerHub
+ #       uses: docker/login-action@v2
+ #       with:
+ #         username: ${{ secrets.DOCKERHUB_USERNAME }}
+ #         password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+   # setup pipeline enforcer    
+   #   - name: Setup pipeline enforcer
+   #     uses: aquasecurity/pipeline-enforcer-action@main
+   #     with:
+   #       aqua-key: ${{ secrets.AQUA_KEY }}
+   #       aqua-secret: ${{ secrets.AQUA_SECRET }}    
 
-       #Upload Trivy scan results 
+      # Run Aqua Scanner       
+  
+       
+
+ #      Upload Trivy scan results 
  #     - name: Upload Trivy scan results to GitHub Security tab
  #       uses: github/codeql-action/upload-sarif@v2
  #       with:
  #         sarif_file: 'trivy-results.sarif'
          
-#      - name: Build and push
+ #      - name: Build and push
  #       uses: docker/build-push-action@v3
  #       with:
  #         push: true

@@ -3,6 +3,9 @@ on:
    pull_request:
      branches:
        - SD-Check
+       - flight-simulator
+       - warp-drive-manager
+       - ticket-booking
 jobs:
   aqua:
     name: Aqua scanner
